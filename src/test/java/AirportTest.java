@@ -9,8 +9,10 @@ import Planes.MilitaryPlane;
 import Planes.PassengerPlane;
 import Planes.Plane;
 import org.testng.asserts.SoftAssert;
+
 import java.util.Arrays;
 import java.util.List;
+
 
 public class AirportTest {
     private static final List<Plane> planes = Arrays.asList(

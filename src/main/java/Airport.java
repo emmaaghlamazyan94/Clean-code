@@ -3,7 +3,6 @@ import models.MilitaryType;
 import Planes.MilitaryPlane;
 import Planes.PassengerPlane;
 import Planes.Plane;
-
 import java.util.*;
 
 /**
