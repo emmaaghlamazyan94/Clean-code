@@ -44,7 +44,8 @@ public class AirportTest {
     public void testGetTransportMilitaryPlanes() {
         List<MilitaryPlane> transportMilitaryPlanes = airport.getTransportMilitaryPlanes();
         for (MilitaryPlane militaryPlane : transportMilitaryPlanes) {
-            softAssert.assertEquals(militaryPlane.getType(), MilitaryType.TRANSPORT);
+            softAssert.assertEquals(militaryPlane.getType(), MilitaryType.TRANSPORT,
+                    "There are no transport military planes");
         }
         softAssert.assertAll();
     }
@@ -54,7 +55,8 @@ public class AirportTest {
         PassengerPlane planeWithMaxPassengerCapacity =
                 new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
         PassengerPlane expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-        Assert.assertEquals(expectedPlaneWithMaxPassengersCapacity, planeWithMaxPassengerCapacity);
+        Assert.assertEquals(expectedPlaneWithMaxPassengersCapacity, planeWithMaxPassengerCapacity,
+                "Passenger plane with max capacity is not found");
     }
 
     @Test
@@ -64,14 +66,16 @@ public class AirportTest {
         for (int i = 0; i < planesSortedByMaxLoadCapacity.size() - 1; i++) {
             Plane currentPlane = planesSortedByMaxLoadCapacity.get(i);
             Plane nextPlane = planesSortedByMaxLoadCapacity.get(i + 1);
-            Assert.assertTrue(currentPlane.getMaxLoadCapacity() <= nextPlane.getMaxLoadCapacity());
+            Assert.assertTrue(currentPlane.getMaxLoadCapacity() <= nextPlane.getMaxLoadCapacity(),
+                    "Planes are not sorted by max capacity");
         }
     }
 
     @Test
     public void testGetBomberInMilitaryPlanes() {
         for (MilitaryPlane militaryPlane : airport.getBomberMilitaryPlanes()) {
-            softAssert.assertEquals(militaryPlane.getType(), MilitaryType.BOMBER);
+            softAssert.assertEquals(militaryPlane.getType(), MilitaryType.BOMBER,
+                    "There are no bomber military planes");
         }
         softAssert.assertAll();
     }
@@ -79,7 +83,8 @@ public class AirportTest {
     @Test
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified() {
         for (ExperimentalPlane experimentalPlane : airport.getExperimentalPlanes()) {
-            softAssert.assertFalse(experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED);
+            softAssert.assertFalse(experimentalPlane.getClassificationLevel() == ClassificationLevel.UNCLASSIFIED,
+                    "Unclassified planes has higher classification level than classified ones");
         }
         softAssert.assertAll();
     }
